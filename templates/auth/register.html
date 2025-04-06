@@ -1,0 +1,68 @@
+{% extends 'base/base.html' %}
+{% block title %} Register {% endblock title %} 
+{% block body %}
+
+<main>
+    <h1>Register</h1>
+
+    <!-- Display Error Message if it exists -->
+    {% if error %}
+        <div class="error-message">
+            <img class="gif" src="https://media.tenor.com/ND7gVsruMjMAAAAi/startled-stuart-the-minion.gif" alt="error-message" title="gif"/>
+            <p>{{ error }}</p>
+        </div>
+    {% endif %}
+    
+      <!-- Display Success Message if it exists -->
+  {% if success %}
+  <div class="success-message">
+    <img class="gif" src="https://media.tenor.com/8mb5Z1npQUEAAAAi/minions.gif" alt="error-message" title="gif"/>
+{{ success }}
+  </div>
+{% endif %}
+
+    <!-- Register Form -->
+    <form id="auth-form" action="{{ url_for('register') }}" method="post">
+        <label for="username">Name:</label>
+        <input type="text" id="username" name="username" placeholder="Name" autocomplete="name" required>
+        
+        <label for="userid">ID Number:</label>
+        <input type="text" id="userid" name="userid" placeholder="ID Number" autocomplete="username" required>
+        
+        <label for="password">Password:</label>
+        <input type="password" id="password" name="password" placeholder="Password" autocomplete="new-password" required>
+        
+        <label for="confirm-password">Confirm Password:</label>
+        <input type="password" id="confirm-password" name="confirm-password" placeholder="Confirm Password" autocomplete="new-password" required>
+
+        <input type="submit" value="Register">
+    </form>
+
+    <!-- JavaScript for Frontend Validation -->
+    <script>
+        // Handle form submission
+        document.getElementById("auth-form").onsubmit = function(event) {
+            var password = document.getElementById("password").value;
+            var confirmPassword = document.getElementById("confirm-password").value;
+
+            // Check if the passwords match
+            if (password !== confirmPassword) {
+                event.preventDefault(); // Prevent form submission
+                alert("Passwords do not match. Please ensure both passwords are the same.");
+                return false; // Return false to prevent form submission
+            }
+
+            // Password length validation (at least 6 characters)
+            if (password.length < 6) {
+                event.preventDefault(); // Prevent form submission
+                alert("Password must be at least 6 characters long.");
+                return false;
+            }
+
+            // Optionally, you can also add other checks here (e.g., for special characters, numbers, etc.)
+        };
+    </script>
+
+</main>
+
+{% endblock body %}

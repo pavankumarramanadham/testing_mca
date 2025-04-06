@@ -1,0 +1,7 @@
+flask
+flask-SQLAlchemy
+pytz
+joblib
+imageio
+flask opencv-python
+scikit-learn
