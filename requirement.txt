@@ -5,3 +5,4 @@ joblib
 imageio
 flask opencv-python
 scikit-learn
+gunicorn
