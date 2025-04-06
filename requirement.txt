@@ -3,6 +3,6 @@ flask-SQLAlchemy
 pytz
 joblib
 imageio
-flask opencv-python
+opencv-python
 scikit-learn
 gunicorn
